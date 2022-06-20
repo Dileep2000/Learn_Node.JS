@@ -165,3 +165,92 @@
 // const _ = require('lodash')
 // const items = [1,[2,3,[4]]]
 // console.log(_.flattenDeep(items))
+
+// Important topics
+// Event loop, ASYNC Pattrens, Event Emitters and Streams
+// Main concepts
+// Pre-built code
+
+// Event Loops
+// Exapmle 1
+// const {readFile} = require('fs')
+// console.log("Started a first task")
+// readFile('./src/component/static/first.txt','utf8',(err,res)=>{
+//     if(err) {
+//         console.log(err)
+//         return
+//     }
+//     console.log(res)
+//     console.log("Completed first task")
+// })
+// console.log("Starting next task")
+
+// Example 2
+// started os process
+// console.log("First")
+// setTimeout(()=>{
+//     console.log("second"), 0
+// })
+// console.log("third")
+// completed and exited os process
+
+// Example 3
+// setInterval(()=>{
+//     console.log("Hello World")
+// },2000)
+// console.log('I will run first')
+// Process stays alive unles you kill the process ctrl+c or any unexpedcted error
+
+// Exapmle 4
+// const http = require('http')
+// const server = http.createServer((req,res)=>{
+//     console.log('request event')
+//     res.end("hello world")
+// })
+// server.listen(5000, ()=> {
+//     console.log('server listening on port: 5000...')
+// })
+
+// Async pattrens
+// const {readFile, writeFile} = require('fs').promises
+// const util = require('util')
+// readFile('./src/component/static/first.txt','utf8',(err,data)=>{
+//     if(err) {
+//         console.log(err)
+//         return
+//     }
+//     console.log(data)
+// })
+// Turning this into promise will fix the blocking problem
+// const getText = (path) => {
+//     return new Promise((resolve,reject) => {
+//         readFile('./src/component/static/first.txt','utf8',(err,data)=>{
+//             if(err) {
+//                 reject(err)
+//             } else {
+//                 resolve(data)
+//             }
+//         })
+//     })
+// }
+// const readFilePromice = util.promisify(readFile)
+// const writreFilePromice = util.promisify(writeFile)
+
+// getText('./src/component/static/first.txt').then(result=> console.log(result)).catch(err => {
+//     console.log(err)
+// })
+
+// const start = async() => {
+//     try {
+//         const first = await readFile('./src/component/static/first.txt','utf8')
+//         const second = await readFile('./src/component/static/second.txt','utf8')
+//         console.log(first)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// start()
+
+// Events
+//  - Event-Driven Programming
+//  - Used heavily in node.js
