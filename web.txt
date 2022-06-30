@@ -1,0 +1,33 @@
+HTTP Messages
+
+Request --> Node/Express --> Data --> Response --> WEB
+
+User sends HTTP request and servers sends HTTP respose message
+
+Building web server using node/Express
+
+Express js Framework used to build using node. It makes our life easy.
+
+Request Messafes
+
+Method ->  GET /contact Http/1.1
+
+        /    Headers
+
+url         Body(Optional)
+
+
+Response Messages   HTTP/1.1 200    ok   status text
+            /                   \
+    Headears                    status code
+    Body(optional)
+
+Headers - info about our request or respose(a set of key value pairs)
+
+HTTP Methods
+
+GET Read Data
+POST Insert Data
+PUT Update Data
+DELETE Delete Data
+

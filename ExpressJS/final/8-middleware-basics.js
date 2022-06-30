@@ -1,0 +1,37 @@
+// Middleware are functions that executes during the request to the server. Each middleware functions has access to req and res objedct.
+const express = require('express')
+const app = express()
+
+// req => middleware => res
+
+const logger = (req,res,next) => {
+    const method = req.method
+    const url = req.url
+    const time = new Date().getFullYear()
+    console.log(method,url,time)
+    // res.send("Testing")
+    next()
+}
+app.get('/',logger,(req,res)=> {
+    // const method = req.method
+    // const url = req.url
+    // const time = new Date().getFullYear()
+    // console.log(method,url,time)
+    res.send("Home page")
+})
+
+app.get('/about',logger,(req,res)=> {
+    res.send("About page")
+})
+
+app.get('/api/products',logger,(req,res)=> {
+    res.send("Products page")
+})
+
+app.get('/api/items',logger,(req,res)=> {
+    res.send("Items page")
+})
+
+app.listen(5000,()=>{
+    console.log('server is listening on port 5000....')
+})
